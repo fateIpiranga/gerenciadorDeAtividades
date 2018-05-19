@@ -21,10 +21,10 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header"><h3>Cadastro de Alunos</h3></div>
       <div class="card-body">
-        <form>
+        <form method="post" action="register.php">
 		 <div class="form-group">
-            <label for="Curso">Codigo - Curso</label>
-            <select name="Curso">
+            <label for="codigoCurso">Codigo - Curso</label>
+            <select name="codigoCurso" id="codigoCurso">
 				<option value="ANÁLISE DE DESENVOLVIMENTO DE SISTEMAS">001 - ANÁLISE DE DESENVOLVIMENTO DE SISTEMAS</option>
 				<option value="EVENTOS">002 - EVENTOS</option>
 				<option value="GESTÃO COMERCIAL">003 - GESTÃO COMERCIAL</option>
@@ -34,41 +34,41 @@
 		  </div>
           <div class="form-group">
             <label for="ra">RA</label>
-            <input class="form-control" id="ra" type="text" aria-describedby="RAHelp" pattern="[0-9]+$" placeholder="Digite seu número de RA." required >
+            <input class="form-control" name="ra" id="ra" type="text" aria-describedby="RAHelp" pattern="[0-9]+$" placeholder="Digite seu número de RA." required >
 		  </div>
 		  <div class="form-group">
             <label for="nome">Nome</label>
-            <input class="form-control" id="nome" type="text" aria-describedby="nameHelp" placeholder="Digite seu nome." required >          
+            <input class="form-control" name="nome" id="nome" type="text" aria-describedby="nameHelp" placeholder="Digite seu nome." required >          
           </div>
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input class="form-control" id="email" type="email" aria-describedby="emailHelp" placeholder="Digite seu E-mail." required >
+            <input class="form-control" name="email" id="email" type="email" aria-describedby="emailHelp" placeholder="Digite seu E-mail." required >
           </div>
 		  <div class="form-group">
             <label for="telefone">Telefone</label>
-            <input class="form-control" id="telefone" type="tel" aria-describedby="phoneHelp" placeholder="Digite seu telefone." required >
+            <input class="form-control" name="telefone" id="telefone" type="tel" aria-describedby="phoneHelp" placeholder="Digite seu telefone." required >
           </div>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="senha">Senha</label>
-                <input class="form-control" id="senha" type="password" placeholder="Digite a senha." required>
+                <input class="form-control" name="senha" id="senha" type="password" placeholder="Digite a senha." required>
               </div>
               <div class="col-md-6">
                 <label for="confirmaSenha">Confirme a senha</label>
-                <input class="form-control" id="confirmaSenha" type="password" placeholder="Digite a senha novamente." oninput="validaSenha(this)" required>
+                <input class="form-control" id="ConfirmaSenha" type="password" placeholder="Digite a senha novamente." oninput="validaSenha(this)" required>
               </div>
             </div></br>
 			 <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label>Status</label>
-					<input type="radio" id="ativo" name="status"> Ativo			
-					<input type="radio" id="inativo" name="status" > Inativo
+					<input type="radio" id="ativo" name="status" value="Ativo"> Ativo			
+					<input type="radio" id="inativo" name="status" value="Inativo"> Inativo
             </div>
           </div>
           </div>
-		  <button type="submit" class="btn btn-primary btn-block" href="login.html">Cadastrar</button>
+		  <input type="submit" name="btn1" class="btn btn-primary btn-block"  value="Cadastrar" href="login.html">
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="login.html">Área de login</a>
@@ -76,6 +76,14 @@
       </div>
     </div>
   </div>
+  <?php
+		//$con = new mysqli("baratheon0001.hospedagemdesites.ws","norto_fatecig","freiJoao59","norton_fatecig");
+		if(isset($_POST["btn1"]))
+		{
+		inserir();
+		}
+		//$con->close();		
+	?>
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -94,3 +102,28 @@ function validaSenha (input){
   }
 } 
 </script>
+<?php
+function inserir()
+	{ 
+			$con = new mysqli("baratheon0001.hospedagemdesites.ws","norto_fatecig","freiJoao59","norton_fatecig");
+			//$con = new mysqli("localhost","root","","teste");
+			// definições de host, database, usuário e senha
+			//$servidor = "localhost";
+			//$usuario = "root";
+			//$senha = "";
+			//$bancodedados = "teste";
+			//$con = mysqli_connect($servidor, $usuario, $senha, $bancodedados) or die ("Erro ao conectar com o servidor");
+			$codigoCurso = $_POST["codigoCurso"];
+			$ra	= $_POST["ra"];
+			$nome	= $_POST["nome"];
+			$email	= $_POST["email"];
+			$telefone = $_POST["telefone"];
+			$senha	= $_POST["senha"];
+			$status	= $_POST["status"];			
+			$sql = "insert into aluno(codigoCurso, ra, nome, email, telefone, senha, status) values('$codigoCurso', '$ra', '$nome', '$email', '$telefone', '$senha', '$status')";
+			mysqli_query($con,$sql);
+			echo $sql;
+			echo "registro inserido com sucesso !";
+			$con->close();
+	}
+?>
