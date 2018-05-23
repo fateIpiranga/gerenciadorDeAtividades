@@ -63,8 +63,8 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label>Status</label>
-					<input type="radio" id="ativo" name="status" value="Ativo"> Ativo			
-					<input type="radio" id="inativo" name="status" value="Inativo"> Inativo
+					<input type="radio" id="ativo" name="status" value="1"> Ativo			
+					<input type="radio" id="inativo" name="status" value="0"> Inativo
             </div>
           </div>
           </div>
