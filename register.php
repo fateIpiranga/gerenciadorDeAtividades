@@ -71,7 +71,7 @@
 		  <input type="submit" name="btn1" class="btn btn-primary btn-block"  value="Cadastrar" href="login.html">
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="login.html">Área de login</a>
+          <a class="d-block small mt-3" href="login.php">Área de login</a>
         </div>
       </div>
     </div>

@@ -38,8 +38,8 @@
 		  <button type="submit" class="btn btn-primary btn-block" href="login.html">Enviar</button>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="register.html">Registre-se</a>
-          <a class="d-block small" href="login.html">Área de Login</a>
+          <a class="d-block small mt-3" href="register.php">Registre-se</a>
+          <a class="d-block small" href="login.php">Área de Login</a>
         </div>
       </div>
     </div>

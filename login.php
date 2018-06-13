@@ -33,8 +33,8 @@
 		  <button type="submit" class="btn btn-primary btn-block" href="index.html">Entrar</button>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="register.html">Registre-se</a>
-          <a class="d-block small" href="forgot-password.html">Esqueceu a Senha?</a>
+          <a class="d-block small mt-3" href="register.php">Registre-se</a>
+          <a class="d-block small" href="forgot-password.php">Esqueceu a Senha?</a>
         </div>
       </div>
     </div>
