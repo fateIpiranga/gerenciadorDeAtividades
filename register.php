@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>Gerenciador de Atividades</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="../css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -25,11 +25,19 @@
 		 <div class="form-group">
             <label for="codigoCurso">Codigo - Curso</label>
             <select name="codigoCurso" id="codigoCurso">
-				<option value="ANÁLISE DE DESENVOLVIMENTO DE SISTEMAS">001 - ANÁLISE DE DESENVOLVIMENTO DE SISTEMAS</option>
-				<option value="EVENTOS">002 - EVENTOS</option>
-				<option value="GESTÃO COMERCIAL">003 - GESTÃO COMERCIAL</option>
-				<option value="RECURSOS HUMANOS">004 - RECURSOS HUMANOS</option>
-				<option value="GESTÃO EMPRESARIAL">005 - EAD - GESTÃO EMPRESARIAL</option>
+				<option value="0"> Nenhum menu relacionado</option>
+					<?php
+						$conexao = mysqli_connect("baratheon0001.hospedagemdesites.ws","norto_fatecig","freiJoao59","norton_fatecig");
+						$sql = "select codigo, nomeCurso from curso where status=1";
+						$result = mysqli_query($conexao, $sql);
+						while ($registro = @mysqli_fetch_array($result)) 
+						{
+							$codigo = $registro ["codigo"];
+							$nomeCurso = $registro ["nomeCurso"];
+							echo"<option value='$codigo'> $nomeCurso </option>";
+						}					
+						?>
+						
 			</select>
 		  </div>
           <div class="form-group">
@@ -59,7 +67,7 @@
                 <input class="form-control" id="ConfirmaSenha" type="password" placeholder="Digite a senha novamente." oninput="validaSenha(this)" required>
               </div>
             </div></br>
-			 <div class="form-group">
+			<!-- <div type="hidden" class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label>Status</label>
@@ -67,7 +75,8 @@
 					<input type="radio" id="inativo" name="status" value="0"> Inativo
             </div>
           </div>
-          </div>
+          </div>-->
+		  
 		  <input type="submit" name="btn1" class="btn btn-primary btn-block"  value="Cadastrar" href="login.html">
         </form>
         <div class="text-center">
@@ -119,10 +128,9 @@ function inserir()
 			$email	= $_POST["email"];
 			$telefone = $_POST["telefone"];
 			$senha	= $_POST["senha"];
-			$status	= $_POST["status"];			
-			$sql = "insert into aluno(codigoCurso, ra, nome, email, telefone, senha, status) values('$codigoCurso', '$ra', '$nome', '$email', '$telefone', '$senha', '$status')";
+			//$status	= $_POST["status"];			
+			$sql = "insert into aluno(codigoCurso, ra, nome, email, telefone, senha, status) values('$codigoCurso', '$ra', '$nome', '$email', '$telefone', '$senha', '1')";
 			mysqli_query($con,$sql);
-			echo $sql;
 			echo "registro inserido com sucesso !";
 			$con->close();
 	}

@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>Gerenciador de Atividades</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="../css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -23,19 +23,13 @@
       <div class="card-body">
         <div class="text-center mt-4 mb-3">
           <h4>Esqueceu sua senha?</h4>
-          <p>Digite seu e-mail ou telefone cadastrados e nós lhe enviaremos instruções sobre como redefinir sua senha.</p>
+          <p>Digite seu e-mail cadastrado e nós lhe enviaremos instruções sobre como redefinir sua senha.</p>
         </div>
         <form>
           <div class="form-group">
             <input class="form-control" id="email" type="email" aria-describedby="emailHelp" placeholder="Digite seu E-mail.">
           </div>
-		  <div class="text-center mt-4 mb-3">
-		  <h5>OU</h5>
-		  </div>
-		  <div class="form-group">
-            <input class="form-control" id="telefone" type="tel" maxlength="15" aria-describedby="PhoneHelp" placeholder="Digite seu telefone.">
-          </div>
-		  <button type="submit" class="btn btn-primary btn-block" href="login.html">Enviar</button>
+		  <button type="submit" class="btn btn-primary btn-block" href="login.php">Enviar</button>
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="register.php">Registre-se</a>
